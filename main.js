@@ -74,9 +74,11 @@ const neal = new Player('Evan Neal','Junior','Alabama','OT',["uses his massive f
 //push players into array
 draftees.push(thibodeaux,hutchinson,johnson,stingley,gardner,london,wilson,burks,ekwonu,neal);
 
-//quickFacts array construction. FORMAT = this._name has/is/
-thibodeaux ["rushes with good instincts and feel and has shown an uncanny ability to set linemen up throughout the game","Can play in an even or odd front. He’d ideally add more mass to his frame if drafted by a 4-3 team."]
+//function to draft players
+const select= () => {
+    let i= Math.floor(draftees.length * Math.random());
+    return `With the 4th pick in the 2022 NFL Draft, the New York Jets select ${draftees[i].name}, ${draftees[i].position}
+    from ${draftees[i].college}.`
+    }
 
-console.log('hello');
-
-console.log(thibodeaux.quickFacts())
+console.log(select());
