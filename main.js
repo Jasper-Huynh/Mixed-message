@@ -7,27 +7,24 @@ class Player {
         this._position = position;
         this.analysis = analysis;
     }
-    get name() {
+      get name() {
         return this._name;
     }
-    get year() {
+      get year() {
         return this._year;
     }
-    get college() {
+      get college() {
         return this._college;
     }
-    get position() {
+      get position() {
         return this._position;
     }
     //array of three positive statements to be produced at random
-    quickFacts() {
+      quickFacts() {
         let i= Math.floor(this.analysis.length * Math.random());
     return this.analysis[i]
     }
 };
-
-//Array for all Players
-const draftees = [];
 
 //create players using Player Class
 const thibodeaux = new Player('Kayvon Thibodeaux','Junior','Oregon','EDGE',
@@ -71,14 +68,51 @@ const neal = new Player('Evan Neal','Junior','Alabama','OT',["uses his massive f
 "uses his natural spatial awareness to take away the inside move for defenders and force them around him.",
 "has great power at the POA. Has an elite-level first step that allows him to generate power to move defenders off the ball."]);
 
-//push players into array
-draftees.push(thibodeaux,hutchinson,johnson,stingley,gardner,london,wilson,burks,ekwonu,neal);
+const linderbaum = new Player('Tyler Linderbaum','Junior','Iowa','OL',["has the foot quickness and GPS to consistently find top positioning in the first phase of the block.",
+"has Pro Bowl potential but needs to be matched with a move-based rushing attack.","s very agile working up to the second level on combo blocks. Scouts rave about his makeup and leadership."]);
+
+const hamilton = new Player('Kyle Hamilton','Junior','Notre Dame','S',["has rare height (6-4), length and fluidity for the safety position. Against the pass, his versatility is a major asset.",
+"has rare height (6-4), length and fluidity for the safety position. Against the pass, his versatility is a major asset.","has all of the tools to emerge as a Pro Bowler early in his career."]);
+//Array for all Players
+const draftees = [];
+
+//push all players into array
+draftees.push(thibodeaux,hutchinson,johnson,stingley,gardner,london,wilson,burks,ekwonu,neal,hamilton,linderbaum);
 
 //function to draft players
-const select= () => {
-    let i= Math.floor(draftees.length * Math.random());
-    return `With the 4th pick in the 2022 NFL Draft, the New York Jets select ${draftees[i].name}, ${draftees[i].position}
-    from ${draftees[i].college}.`
-    }
+const firstPick = () => {
+    let first = Math.floor(draftees.length * Math.random());
+        return `With the 1st pick in the 2022 NFL Draft, the Jacksonville Jaguars select ${draftees[first].name}, ${draftees[first].position}
+        from ${draftees[first].college}. ${draftees[first].name} ${draftees[first].quickFacts()}`
+    };
 
-console.log(select());
+const secondPick = () => { 
+    let second = Math.floor(draftees.length * Math.random());
+        return `With the 2nd pick in the 2022 NFL Draft, the Detroit Lions select ${draftees[second].name}, ${draftees[second].position}
+        from ${draftees[second].college}. ${draftees[second].name} ${draftees[second].quickFacts()}`
+    };
+
+const thirdPick = () => {
+    let third = Math.floor(draftees.length * Math.random());
+        return `With the 3rd pick in the 2022 NFL Draft, the Houston Texans select ${draftees[third].name}, ${draftees[third].position}
+        from ${draftees[third].college}. ${draftees[third].name} ${draftees[third].quickFacts()}`
+        };
+
+const fourthPick = () => {
+    let fourth = Math.floor(draftees.length * Math.random());
+        return `With the 4th pick in the 2022 NFL Draft, the New York Jets select ${draftees[fourth].name}, ${draftees[fourth].position}
+        from ${draftees[fourth].college}. ${draftees[fourth].name} ${draftees[fourth].quickFacts()}`
+    };
+
+const mockDraft = () => {
+    console.log(firstPick());
+    if (secondPick()!== firstPick()) {
+        console.log(secondPick());
+    } if (thirdPick() !== secondPick()) {
+        console.log(thirdPick())
+    } if (fourthPick() !== thirdPick()) {
+        console.log(fourthPick())
+    }
+};
+
+mockDraft();
